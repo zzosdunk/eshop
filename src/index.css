@@ -15,8 +15,9 @@
   );
 
   --color-bg: #edc7b7;
-  --color-title: #ac3b61;
-  --color-text: #123c69;
+  --color-title: #ff523b;
+  --color-label: #ff6e5b;
+  --color-text: #3a3a3a;
   --color-block: #eee2dc;
   --color-subtext: #ff8a71;
   --color-button: #ff523b;

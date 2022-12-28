@@ -1,7 +1,49 @@
+import { useRef } from "react";
+import { useForm, Controller } from "react-hook-form";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import Navigation from "../../components/Navigation/Navigation";
+import RegexPhoneNumberInput from "../../components/UI/PhoneInput";
 import "./ContactPage.css";
 
+import emailjs from "@emailjs/browser";
+
+type FormData = {
+  email: string;
+  subject: string;
+  message: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+};
+
 const ContactPage = () => {
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    mode: "onBlur",
+  });
+
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = () => {
+    emailjs.sendForm(
+      "service_s5fkmsb",
+      "template_rxhuvym",
+      form.current as HTMLFormElement,
+      "2algFDK7uP97qEKRZ"
+    );
+
+    resetField("email");
+    resetField("subject");
+    resetField("message");
+    resetField("firstName");
+    resetField("lastName");
+    resetField("phoneNumber");
+  };
+
   return (
     <>
       <Navigation />
@@ -12,40 +54,123 @@ const ContactPage = () => {
         <div className="box">
           <div className="contact form">
             <h2>Send a Message</h2>
-            <form>
+            <form onSubmit={handleSubmit(sendEmail)} ref={form}>
               <div className="formBox">
                 <div className="row50">
                   <div className="inputBox">
                     <span>First Name</span>
-                    <input type="text" placeholder="First Name" />
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      {...register("firstName", {
+                        required: {
+                          value: true,
+                          message:
+                            "You must specify your First Name before moving forward",
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z]+$/,
+                          message:
+                            "That's not a valid First Name where I come from...",
+                        },
+                      })}
+                    />
+                    {errors.firstName && (
+                      <p className="errorMessage">
+                        {errors.firstName?.message}
+                      </p>
+                    )}
                   </div>
                   <div className="inputBox">
                     <span>Last Name</span>
-                    <input type="text" placeholder="Last Name" />
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      {...register("lastName", {
+                        required: {
+                          value: true,
+                          message:
+                            "You must specify your Last Name before moving forward",
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z]+$/,
+                          message:
+                            "That's not a valid Last Name where I come from...",
+                        },
+                      })}
+                    />
+                    {errors.lastName && (
+                      <p className="errorMessage">{errors.lastName?.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="row50">
                   <div className="inputBox">
                     <span>Email</span>
-                    <input type="text" placeholder="Enter email" />
+                    <input
+                      type="text"
+                      placeholder="Enter email"
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Please, enter your email",
+                        },
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: "Please, enter valid email",
+                        },
+                      })}
+                    />
+                    {errors.email && (
+                      <p className="errorMessage">{errors.email?.message}</p>
+                    )}
                   </div>
                   <div className="inputBox">
-                    <span>Phone</span>
-                    <input type="text" placeholder="Enter your phone number" />
+                    <span>Subject</span>
+                    <input
+                      type="text"
+                      placeholder="Enter your subject"
+                      {...register("subject", {
+                        required: {
+                          value: true,
+                          message:
+                            "You must specify your subject before moving forward",
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z]+$/,
+                          message: "That's not a valid subject",
+                        },
+                      })}
+                    />
+                    {errors.subject && (
+                      <p className="errorMessage">{errors.subject?.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="row100">
                   <div className="inputBox">
                     <span>Message</span>
-                    <textarea placeholder="Write your message here..."></textarea>
+                    <textarea
+                      placeholder="Write your message here..."
+                      {...register("message", {
+                        required: {
+                          value: true,
+                          message: "The message should not be empty",
+                        },
+                        maxLength: 280,
+                      })}
+                    ></textarea>
+                    {errors.message && (
+                      <p className="errorMessage">{errors.message?.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div className="row100">
                   <div className="inputBox">
-                    <input type="submit" value="Send" />
+                    <input type="submit" value="Send" disabled={!isValid} />
                   </div>
                 </div>
               </div>
