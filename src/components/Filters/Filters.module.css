@@ -1,0 +1,6 @@
+.filterBox {
+  border: 3px var(--color-border) solid;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+}

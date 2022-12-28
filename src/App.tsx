@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+
+import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
+import Navigation from "./components/Navigation/Navigation";
+import MainPage from "./pages/MainPage/MainPage";
+
+import styles from "./App.module.css";
+import Cart from "./components/Cart/Cart";
+import { useShoppingCart } from "./context/ShoppingCartContext";
 
 function App() {
+  const { isCartOpen } = useShoppingCart();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.appStyles}>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+      {isCartOpen ? <Cart /> : null}
     </div>
   );
 }
