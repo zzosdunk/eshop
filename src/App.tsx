@@ -8,6 +8,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import styles from "./App.module.css";
 import Cart from "./components/Cart/Cart";
 import { useShoppingCart } from "./context/ShoppingCartContext";
+import ProductsCategory from "./pages/ProductsPage/ProductsCategory";
 
 function App() {
   const { isCartOpen } = useShoppingCart();
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/products/sort/:category" element={<ProductsCategory />} />
       </Routes>
       {isCartOpen ? <Cart /> : null}
     </div>

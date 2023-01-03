@@ -42,21 +42,21 @@
 }
 
 .quantityBlock button {
-  background-color: #ffaa00;
+  background-color: var(--color-button);
   padding: 10px 30px;
   border-radius: var(--border-radius);
   margin: 5px;
   width: 100%;
   letter-spacing: 4px;
   font-size: 15px;
-  color: #3f00b3;
+  color: #fff;
 }
 
 .price {
   font-size: 30px;
   font-weight: 600;
   margin-top: 10%;
-  color: #ffaa00;
+  color: var(--color-title);
 }
 
 .quantityLogic {

@@ -50,9 +50,6 @@ const Filters = ({ bySearchFilter, byTypeFilter }: FiltersProps) => {
         <CheckboxUI label="Jewelery" onCheckboxClicked={checkboxesHandler} />
         <CheckboxUI label="Electronics" onCheckboxClicked={checkboxesHandler} />
       </div>
-      <div className={styles.filterBox}>
-        <CheckboxUI label="Special checkbox" onCheckboxClicked={byTypeFilter} />
-      </div>
     </>
   );
 };

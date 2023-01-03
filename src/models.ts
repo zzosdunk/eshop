@@ -7,4 +7,6 @@ export interface IProduct {
   price?: number;
   rating?: number;
   quantity?: number;
+  limited?: boolean;
+  imgTrans?: string;
 }

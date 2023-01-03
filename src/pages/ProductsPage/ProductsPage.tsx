@@ -12,8 +12,7 @@ import styles from "./ProductsPage.module.css";
 import Navigation from "../../components/Navigation/Navigation";
 
 const ProductsPage = () => {
-  const { paginatedProducts, isLoading, error, getPaginate, products } =
-    useProducts();
+  const { isLoading, error, getPaginate, products } = useProducts();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(5);
@@ -29,14 +28,14 @@ const ProductsPage = () => {
   });
 
   const filterDataByUserInput = (searchQuery: string) => {
-    const filteredData = paginatedProducts.filter((product) => {
+    const filteredData = products.filter((product) => {
       if (searchQuery.trim() === "") {
         filteredProducts.filteredList.splice(
           0,
           filteredProducts.filteredList.length
         );
         console.log(filteredProducts.filteredList.length);
-        return paginatedProducts;
+        return products;
       }
 
       if (product.title)
@@ -47,14 +46,14 @@ const ProductsPage = () => {
   };
 
   const filterDataByType = (typeQuery: string) => {
-    const filteredData = paginatedProducts.filter((product) => {
+    const filteredData = products.filter((product) => {
       if (typeQuery.trim() === "") {
         filteredProducts.filteredList.splice(
           0,
           filteredProducts.filteredList.length
         );
         console.log(filteredProducts.filteredList.length);
-        return paginatedProducts;
+        return products;
       }
 
       if (product.category)
@@ -67,7 +66,7 @@ const ProductsPage = () => {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProductsShown = paginatedProducts.slice(
+  const currentProductsShown = products.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -84,12 +83,15 @@ const ProductsPage = () => {
     <>
       <Navigation />
       <div className={styles.dz_productsPage}>
-        <div className={styles.filterBar}>
+        <div className={styles.title}>
+          <h1>AVAILABLE PRODUCTS</h1>
+        </div>
+        {/* <div className={styles.filterBar}>
           <Filters
             bySearchFilter={filterDataByUserInput}
             byTypeFilter={filterDataByType}
           />
-        </div>
+        </div> */}
         <div className={styles.products}>
           {isLoading && <Loader />}
           {error && <ErrorMessage error={error} />}

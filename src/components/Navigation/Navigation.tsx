@@ -52,7 +52,7 @@ const Navigation = () => {
         <div className="links">
           <NavLink to="/">Main Page</NavLink>
           <NavLink to="/products">Products</NavLink>
-          <NavLink to="/contact">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </div>
         {/* <div className="logo">
         <a href="#">DZShop</a>
