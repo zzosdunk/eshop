@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
-import Navigation from "./components/Navigation/Navigation";
 import MainPage from "./pages/MainPage/MainPage";
 
 import styles from "./App.module.css";

@@ -4,17 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useProducts } from "../../hooks/useProducts";
 import "./MainPage.css";
 
-import {
-  User1,
-  User2,
-  User3,
-  Brand1,
-  Brand2,
-  Brand3,
-  Brand4,
-  Brand5,
-  Quote,
-} from "./imports";
+import Quote from "../../assets/icons/left-quote.png";
 import Navigation from "../../components/Navigation/Navigation";
 import HighestRatedProduct from "../../components/Product/HighestRatedProduct";
 import { IProduct } from "../../models";
@@ -48,7 +38,7 @@ const MainPage = () => {
             </div>
             <div className="col-2">
               <img
-                src="https://i.postimg.cc/50cHmR4W/mainpage.png"
+                src="https://i.postimg.cc/7L1mC8bk/mainpage.webp"
                 alt="main"
               />
             </div>
@@ -125,7 +115,11 @@ const MainPage = () => {
                 the guys for such service and the highest culture of customer
                 service!
               </p>
-              <img src={User1} className="commentAvatar" alt="user-img" />
+              <img
+                src="https://i.postimg.cc/xCYpgjB8/user-1.webp"
+                className="commentAvatar"
+                alt="user-img"
+              />
               <h3>Elvira Trivett</h3>
             </div>
             <div className="col-3">
@@ -135,7 +129,11 @@ const MainPage = () => {
                 satisfied with the level of service and the quality of the goods
                 provided.
               </p>
-              <img src={User2} className="commentAvatar" alt="user-img" />
+              <img
+                src="https://i.postimg.cc/Jnq6FVWq/user-2.webp"
+                className="commentAvatar"
+                alt="user-img"
+              />
               <h3>Sean Parker</h3>
             </div>
             <div className="col-3">
@@ -145,7 +143,11 @@ const MainPage = () => {
                 itself brings a separate pleasure. Very convenient and fast
                 delivery.
               </p>
-              <img src={User3} className="commentAvatar" alt="user-img" />
+              <img
+                src="https://i.postimg.cc/HnvSpwn8/user-3.webp"
+                className="commentAvatar"
+                alt="user-img"
+              />
               <h3>Elizabeth Gill</h3>
             </div>
           </div>
@@ -156,19 +158,34 @@ const MainPage = () => {
         <div className="small-container">
           <div className="row">
             <div className="col-5">
-              <img src={Brand1} alt="brand-img" />
+              <img
+                src="https://i.postimg.cc/fy8PV42L/logo-coca-cola.webp"
+                alt="brand-img"
+              />
             </div>
             <div className="col-5">
-              <img src={Brand2} alt="brand-img" />
+              <img
+                src="https://i.postimg.cc/qBwSbnJT/logo-godrej.webp"
+                alt="brand-img"
+              />
             </div>
             <div className="col-5">
-              <img src={Brand3} alt="brand-img" />
+              <img
+                src="https://i.postimg.cc/9FNSVhwg/logo-paypal.webp"
+                alt="brand-img"
+              />
             </div>
             <div className="col-5">
-              <img src={Brand4} alt="brand-img" />
+              <img
+                src="https://i.postimg.cc/Nf0VWMFr/logo-oppo.webp"
+                alt="brand-img"
+              />
             </div>
             <div className="col-5">
-              <img src={Brand5} alt="brand-img" />
+              <img
+                src="https://i.postimg.cc/RZ6YZDcS/logo-philips.webp"
+                alt="brand-img"
+              />
             </div>
           </div>
         </div>

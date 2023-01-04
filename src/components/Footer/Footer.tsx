@@ -1,8 +1,5 @@
 import styles from "./Footer.module.css";
 
-import PlayStore from "../../assets/img/play-store.png";
-import AppStore from "../../assets/img/app-store.png";
-
 const Footer = () => {
   const d = new Date();
   const year = d.getFullYear();
@@ -15,8 +12,14 @@ const Footer = () => {
             <h3>Download Our App</h3>
             <p>Download App for iOS and Android mobile phone.</p>
             <div className={styles["app-logo"]}>
-              <img src={AppStore} alt="mobStore-img" />
-              <img src={PlayStore} alt="mobStore-img" />
+              <img
+                src="https://i.postimg.cc/8PPQN4Kc/app-store.webp"
+                alt="mobStore-img"
+              />
+              <img
+                src="https://i.postimg.cc/N0RP12JZ/play-store.webp"
+                alt="mobStore-img"
+              />
             </div>
           </div>
           <div className={styles["footer-col-2"]}>

@@ -68,7 +68,9 @@ const Navigation = () => {
             >
               <div className="dz__navbar-mobile_menu_container-links">
                 {LINKS.map((link) => (
-                  <NavLink to={link.link}>{link.title}</NavLink>
+                  <NavLink key={link.title} to={link.link}>
+                    {link.title}
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -77,7 +79,9 @@ const Navigation = () => {
         <div className="dz__navbar-links">
           <div className="dz__navbar-links_container">
             {LINKS.map((link) => (
-              <NavLink to={link.link}>{link.title}</NavLink>
+              <NavLink key={link.title} to={link.link}>
+                {link.title}
+              </NavLink>
             ))}
           </div>
         </div>
