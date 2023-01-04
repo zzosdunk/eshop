@@ -2,12 +2,13 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import CartIcon from "../../assets/img/cart.png";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 
-import Hamburger from "../../assets/img/menu.png";
+import Hamburger from "../../assets/images/menu.png";
+import CartIcon from "../../assets/images/cart.png";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

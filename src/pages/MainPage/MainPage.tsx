@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useProducts } from "../../hooks/useProducts";
 import "./MainPage.css";
 
-import Quote from "../../assets/icons/left-quote.png";
+import Quote from "../../assets/images/left-quote.png";
 import Navigation from "../../components/Navigation/Navigation";
 import HighestRatedProduct from "../../components/Product/HighestRatedProduct";
 import { IProduct } from "../../models";
