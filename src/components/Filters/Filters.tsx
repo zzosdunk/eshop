@@ -31,12 +31,9 @@ const Filters = ({ bySearchFilter, byTypeFilter }: FiltersProps) => {
     }
   };
 
-  useEffect(() => {
-    console.log(selectedCheckboxes);
-  }, [selectedCheckboxes]);
+  useEffect(() => {}, [selectedCheckboxes]);
 
   useEffect(() => {
-    console.log(query);
     bySearchFilter(query);
   }, [query]);
 

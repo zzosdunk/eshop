@@ -75,3 +75,24 @@
   letter-spacing: 2px;
   font-style: italic;
 }
+
+@media screen and (max-width: 800px) {
+  .product {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .productImage img {
+    width: 300px;
+  }
+
+  .price {
+    margin-top: 0;
+  }
+}

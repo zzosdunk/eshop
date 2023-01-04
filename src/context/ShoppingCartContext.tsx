@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { IProduct } from "../models";
-
-interface ShoppingCartContext {
+interface IShoppingCartContext {
   openCart: () => void;
   closeCart: () => void;
   getItemQuantity: (product: IProduct) => number;
@@ -15,7 +14,7 @@ interface ShoppingCartContext {
   totalAmount: number;
 }
 
-const ShoppingCartContext = createContext({} as ShoppingCartContext);
+const ShoppingCartContext = createContext({} as IShoppingCartContext);
 
 export const useShoppingCart = () => {
   return useContext(ShoppingCartContext);
@@ -31,11 +30,6 @@ export const ShoppingCartProvider = ({
   const [cartQuantity, setCartQuantity] = useState(0);
 
   const [totalAmount, setTotalAmount] = useState(0);
-
-  // const cartQuantity = cartItems.reduce(
-  //   (quantity, item) => item.quantity + quantity,
-  //   0
-  // );
 
   const openCart = () => {
     setIsCartOpen(true);
@@ -111,7 +105,6 @@ export const ShoppingCartProvider = ({
 
   const cleanCart = () => {
     setCartItems((currentItems) => {
-      console.log("clean cart");
       return currentItems.splice(0, currentItems.length - 1);
     });
   };

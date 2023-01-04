@@ -10,17 +10,13 @@ interface ProductProps {
 }
 
 const HighestRatedProduct = ({ product }: ProductProps) => {
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
-  } = useShoppingCart();
+  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity } =
+    useShoppingCart();
 
   const quantity = getItemQuantity(product);
   return (
     <div className={styles["col-4"]}>
-      <img src={product.image} />
+      <img src={product.image} alt="product" />
       <h4>{product.title}</h4>
       <Rating
         name="half-rating-read"

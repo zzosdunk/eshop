@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
-import userLogo from "../../assets/images/user.png";
-import profile from "../../assets/images/profile.png";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import { Button, IconButton } from "@mui/material";
 import CartIcon from "../../assets/img/cart.png";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 import Hamburger from "../../assets/img/menu.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { openCart, cartQuantity, cleanCart } = useShoppingCart();
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const { openCart, cartQuantity } = useShoppingCart();
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -46,23 +43,45 @@ const Navigation = () => {
     },
   }));
 
+  const LINKS = [
+    { title: "Main Page", link: "/" },
+    { title: "Products", link: "/products" },
+    { title: "Contact", link: "/contact" },
+  ];
+
   return (
     <>
-      <div className="navbar">
-        <div className="links">
-          <NavLink to="/">Main Page</NavLink>
-          <NavLink to="/products">Products</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+      <div className="dz__navbar">
+        <div className="dz__navbar-menu">
+          <img
+            src={Hamburger}
+            className="menu-icon"
+            alt="mobileNavbar"
+            onClick={() => setToggleMenu((prev) => !prev)}
+          />
+          {toggleMenu && (
+            <div
+              className="dz__navbar-mobile_menu_container"
+              style={{
+                maxHeight: toggleMenu ? 300 : 0,
+              }}
+            >
+              <div className="dz__navbar-mobile_menu_container-links">
+                {LINKS.map((link) => (
+                  <NavLink to={link.link}>{link.title}</NavLink>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-        {/* <div className="logo">
-        <a href="#">DZShop</a>
-      </div> */}
-        {/* <div className="userProfile">
-        <button>Profile</button>
-      </div> */}
-        <div className="hamburger-btn">
-          <img src={Hamburger} className="menu-icon" />
+        <div className="dz__navbar-links">
+          <div className="dz__navbar-links_container">
+            {LINKS.map((link) => (
+              <NavLink to={link.link}>{link.title}</NavLink>
+            ))}
+          </div>
         </div>
+
         <button onClick={() => setIsOpen((prev) => !prev)}>
           {cartQuantity > 0 ? (
             <StyledBadge
@@ -70,10 +89,18 @@ const Navigation = () => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               variant="dot"
             >
-              <img src={CartIcon} style={{ width: 30, height: 30 }} />
+              <img
+                src={CartIcon}
+                style={{ width: 30, height: 30 }}
+                alt="cart-icon"
+              />
             </StyledBadge>
           ) : (
-            <img src={CartIcon} style={{ width: 30, height: 30 }} />
+            <img
+              src={CartIcon}
+              style={{ width: 30, height: 30 }}
+              alt="cart-icon"
+            />
           )}
         </button>
       </div>
@@ -85,7 +112,7 @@ const Navigation = () => {
       >
         <div className="sub-menu">
           <div className="user-info">
-            <h1>Your items</h1>
+            <h1>Cart</h1>
           </div>
           <hr />
           <button
@@ -100,19 +127,6 @@ const Navigation = () => {
             </div>
             <p>View Cart</p>
             <span className="cartQuantity">{cartQuantity}</span>
-          </button>
-          <button
-            className="sub-menu-link"
-            aria-label="delete"
-            onClick={() => {
-              cleanCart();
-              setIsOpen(false);
-            }}
-          >
-            <div className="icon">
-              <DeleteIcon />
-            </div>
-            <p>Clean up cart</p>
           </button>
         </div>
       </div>

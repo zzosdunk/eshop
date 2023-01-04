@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import {
-  onSnapshot,
-  QuerySnapshot,
-  DocumentData,
-  query,
-  limit,
-  getDocs,
-  startAt,
-  endAt,
-  orderBy,
-  where,
-} from "firebase/firestore";
+import { query, getDocs, where } from "firebase/firestore";
 import { productsCollection } from "../../lib/controller";
 
 import styles from "./ProductsPage.module.css";
@@ -21,6 +10,7 @@ import { IProduct } from "../../models";
 import Loader from "../../components/Loader/Loader";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { Product } from "../../components/Product/Product";
+import Footer from "../../components/Footer/Footer";
 
 const ProductsCategory = () => {
   const { category } = useParams();
@@ -52,6 +42,7 @@ const ProductsCategory = () => {
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -69,6 +60,7 @@ const ProductsCategory = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

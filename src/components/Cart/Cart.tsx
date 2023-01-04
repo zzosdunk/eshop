@@ -16,7 +16,7 @@ const Cart = () => {
         <CartItem key={item.id} itemData={item} />
       ))}
       <div className={styles.total}>
-        <span>Total amount</span>
+        <span>{cartItems.length > 0 ? "Total amount" : "Cart is empty"}</span>
         <span className={styles.totalAmount}>
           {formatCurrency(totalAmount)}
         </span>
