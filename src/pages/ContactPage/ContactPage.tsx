@@ -28,11 +28,18 @@ const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = () => {
+    if (
+      process.env.REACT_APP_SERVICE_ID === undefined ||
+      process.env.REACT_APP_TEMPLATE_ID === undefined ||
+      process.env.REACT_APP_USER_ID === undefined
+    ) {
+      throw Error("some of keys are undefined");
+    }
     emailjs.sendForm(
-      "service_s5fkmsb",
-      "template_rxhuvym",
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
       form.current as HTMLFormElement,
-      "2algFDK7uP97qEKRZ"
+      process.env.REACT_APP_USER_ID
     );
 
     resetField("email");

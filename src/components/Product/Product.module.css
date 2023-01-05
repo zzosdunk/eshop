@@ -5,7 +5,6 @@
   grid-template-columns: 200px 5fr 2fr;
   grid-gap: 10px;
   border-radius: var(--border-radius);
-  max-height: 350px;
   background: radial-gradient(#fff, #ffd6d6);
   background-size: 150% 150%;
   position: relative;
@@ -78,8 +77,6 @@
   .product {
     display: flex;
     flex-direction: column;
-    min-height: 600px;
-    overflow: hidden;
   }
 
   .productDescription h1 {

@@ -9,10 +9,7 @@ interface CartItemProps {
 }
 
 const CartItem = ({ itemData }: CartItemProps) => {
-  const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
-    useShoppingCart();
-
-  //   const price = `$${props.price.toFixed(2)}`;
+  const { increaseCartQuantity, decreaseCartQuantity } = useShoppingCart();
 
   return (
     <li className={styles["cart-item"]}>

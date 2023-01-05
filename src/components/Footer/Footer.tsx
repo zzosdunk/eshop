@@ -4,6 +4,24 @@ const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
 
+  const PORTFOLIO_LINKS = [
+    {
+      content: "Website Source Code",
+      link: "https://github.com/zzosdunk/eshop",
+    },
+    { content: "Personal Landing Page", link: "https://dzosym.com/" },
+    { content: "Github", link: "https://github.com/zzosdunk" },
+  ];
+
+  const SOCIAL_LINKS = [
+    {
+      content: "LinkedIn",
+      link: "https://www.linkedin.com/in/denys-zosym-498b39141/",
+    },
+    { content: "Facebook", link: "https://www.facebook.com/zzosdunk" },
+    { content: "Instagram", link: "https://www.instagram.com/zonikmus/" },
+  ];
+
   return (
     <div className={styles.footer}>
       <div className={styles.container}>
@@ -31,61 +49,29 @@ const Footer = () => {
           <div className={styles["footer-col-3"]}>
             <h3>Useful Links</h3>
             <ul>
-              <li>
-                <a
-                  href="https://github.com/zzosdunk/eshop"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Website Source Code
-                </a>
-              </li>
-              <li>
-                <a href="https://dzosym.com/" target="_blank" rel="noreferrer">
-                  Personal Landing Page
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/zzosdunk"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Github
-                </a>
-              </li>
+              {PORTFOLIO_LINKS.map((link) => {
+                return (
+                  <li key={link.content}>
+                    <a href={link.link} target="_blank" rel="noreferrer">
+                      {link.content}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className={styles["footer-col-4"]}>
             <h3>Follow Us</h3>
             <ul>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/denys-zosym-498b39141/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/zzosdunk"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/zonikmus/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Instagram
-                </a>
-              </li>
+              {SOCIAL_LINKS.map((link) => {
+                return (
+                  <li key={link.link}>
+                    <a href={link.link} target="_blank" rel="noreferrer">
+                      {link.content}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

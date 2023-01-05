@@ -4,8 +4,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyBKFnmn6ykjvORY0TYwHsaCTPtlQvLAQUQ",
   authDomain: "shop-27b0f.firebaseapp.com",
-  databaseURL:
-    "https://shop-27b0f-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: process.env.REACT_APP_DB_LINK,
   projectId: "shop-27b0f",
   storageBucket: "shop-27b0f.appspot.com",
   messagingSenderId: "230665518867",

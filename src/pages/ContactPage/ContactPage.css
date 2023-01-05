@@ -101,6 +101,7 @@
   resize: none;
   min-height: 220px;
   margin-bottom: 10px;
+  font-family: var(--font-family);
 }
 
 .inputBox input[type="submit"] {
