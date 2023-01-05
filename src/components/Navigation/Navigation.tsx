@@ -13,7 +13,6 @@ import ShoppingCart from "../../assets/images/shoppingCart.png";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [dynamicStyles, setDynamicStyles] = useState("sub-menu-wrap");
   const { openCart, cartQuantity } = useShoppingCart();
 
   const LINKS = [
