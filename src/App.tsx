@@ -4,24 +4,31 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import MainPage from "./pages/MainPage/MainPage";
 
-import styles from "./App.module.css";
+import "./App.css";
 import Cart from "./components/Cart/Cart";
 import { useShoppingCart } from "./context/ShoppingCartContext";
 import ProductsCategory from "./pages/ProductsPage/ProductsCategory";
+
+enum Path {
+  Main = "/",
+  Products = "/products",
+  Contact = "/contact",
+  ProductsCategory = "/products/sort/:category",
+}
 
 function App() {
   const { isCartOpen } = useShoppingCart();
 
   return (
-    <div className={styles.appStyles}>
+    <>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/products/sort/:category" element={<ProductsCategory />} />
+        <Route path={Path.Main} element={<MainPage />} />
+        <Route path={Path.Products} element={<ProductsPage />} />
+        <Route path={Path.Contact} element={<ContactPage />} />
+        <Route path={Path.ProductsCategory} element={<ProductsCategory />} />
       </Routes>
       {isCartOpen ? <Cart /> : null}
-    </div>
+    </>
   );
 }
 

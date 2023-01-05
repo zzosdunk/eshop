@@ -56,10 +56,6 @@
   text-align: center;
 }
 
-.ul {
-  list-style-type: none;
-}
-
 .app-logo {
   margin-top: 20px;
   display: flex;
@@ -79,6 +75,15 @@
 
 .copyright {
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #8a8a8a;
+}
+
+ul {
+  list-style-type: none;
 }
 
 @media screen and (max-width: 600px) {

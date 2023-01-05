@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
 
 const Footer = () => {
-  const d = new Date();
-  const year = d.getFullYear();
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <div className={styles.footer}>

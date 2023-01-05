@@ -8,12 +8,25 @@ import Badge from "@mui/material/Badge";
 
 import Hamburger from "../../assets/images/menu.png";
 import CartIcon from "../../assets/images/cart.png";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ShoppingCart from "../../assets/images/shoppingCart.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [dynamicStyles, setDynamicStyles] = useState("sub-menu-wrap");
   const { openCart, cartQuantity } = useShoppingCart();
+
+  const LINKS = [
+    { title: "Main Page", link: "/" },
+    { title: "Products", link: "/products" },
+    { title: "Contact", link: "/contact" },
+  ];
+
+  const navStyles = toggleMenu
+    ? "dz__navbar-mobile_menu_container-open"
+    : "dz__navbar-mobile_menu_container";
+
+  const cartStyles = isOpen ? "sub-menu-wrap-open" : "sub-menu-wrap";
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -22,8 +35,6 @@ const Navigation = () => {
       boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
       "&::after": {
         position: "absolute",
-        top: 0,
-        left: 0,
         width: "100%",
         height: "100%",
         borderRadius: "50%",
@@ -34,7 +45,7 @@ const Navigation = () => {
     },
     "@keyframes ripple": {
       "0%": {
-        transform: "scale(.8)",
+        transform: "scale(1)",
         opacity: 1,
       },
       "100%": {
@@ -43,12 +54,6 @@ const Navigation = () => {
       },
     },
   }));
-
-  const LINKS = [
-    { title: "Main Page", link: "/" },
-    { title: "Products", link: "/products" },
-    { title: "Contact", link: "/contact" },
-  ];
 
   return (
     <>
@@ -61,12 +66,7 @@ const Navigation = () => {
             onClick={() => setToggleMenu((prev) => !prev)}
           />
           {toggleMenu && (
-            <div
-              className="dz__navbar-mobile_menu_container"
-              style={{
-                maxHeight: toggleMenu ? 300 : 0,
-              }}
-            >
+            <div className={navStyles}>
               <div className="dz__navbar-mobile_menu_container-links">
                 {LINKS.map((link) => (
                   <NavLink key={link.title} to={link.link}>
@@ -87,40 +87,27 @@ const Navigation = () => {
           </div>
         </div>
 
-        <button onClick={() => setIsOpen((prev) => !prev)}>
+        <div onClick={() => setIsOpen((prev) => !prev)} className="cartIcon">
           {cartQuantity > 0 ? (
             <StyledBadge
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               variant="dot"
             >
-              <img
-                src={CartIcon}
-                style={{ width: 30, height: 30 }}
-                alt="cart-icon"
-              />
+              <img src={CartIcon} alt="cart-icon" />
             </StyledBadge>
           ) : (
-            <img
-              src={CartIcon}
-              style={{ width: 30, height: 30 }}
-              alt="cart-icon"
-            />
+            <img src={CartIcon} alt="cart-icon" />
           )}
-        </button>
+        </div>
       </div>
-      <div
-        className="sub-menu-wrap"
-        style={{
-          maxHeight: isOpen ? 400 : 0,
-        }}
-      >
+      <div className={cartStyles}>
         <div className="sub-menu">
           <div className="user-info">
             <h1>Cart</h1>
           </div>
           <hr />
-          <button
+          <div
             className="sub-menu-link"
             onClick={() => {
               setIsOpen(false);
@@ -128,11 +115,11 @@ const Navigation = () => {
             }}
           >
             <div className="icon">
-              <AddShoppingCartIcon />
+              <img src={ShoppingCart} alt="addCart" />
             </div>
             <p>View Cart</p>
             <span className="cartQuantity">{cartQuantity}</span>
-          </button>
+          </div>
         </div>
       </div>
     </>

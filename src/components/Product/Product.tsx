@@ -1,9 +1,9 @@
-import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { IProduct } from "../../models";
 import { formatCurrency } from "../../utilities/formatCurrency";
+import Button from "../UI/Button/Button";
 
 import styles from "./Product.module.css";
 
@@ -20,7 +20,7 @@ export const Product = ({ product }: IProductProps) => {
   return (
     <div className={styles.product}>
       <div className={styles.productImage}>
-        <img src={product.image} alt={product.title} />
+        <img src={product.imgTrans} alt={product.title} />
       </div>
       <div className={styles.productDescription}>
         <div>
@@ -44,29 +44,20 @@ export const Product = ({ product }: IProductProps) => {
         <p className={styles.price}>{formatCurrency(product.price)}</p>
         {quantity === 0 ? (
           <Button
-            variant="contained"
-            disableElevation
+            buttonText="Add to cart"
             onClick={() => increaseCartQuantity(product)}
-          >
-            Add product
-          </Button>
+          />
         ) : (
           <div className={styles.quantityLogic}>
             <Button
-              variant="contained"
-              disableElevation
+              buttonText="-"
               onClick={() => decreaseCartQuantity(product)}
-            >
-              -
-            </Button>
+            />
             <p>{quantity}</p>
             <Button
-              variant="contained"
-              disableElevation
+              buttonText="+"
               onClick={() => increaseCartQuantity(product)}
-            >
-              +
-            </Button>
+            />
           </div>
         )}
       </div>
