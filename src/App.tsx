@@ -1,13 +1,19 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-import ProductsPage from "./pages/ProductsPage/ProductsPage";
-import ContactPage from "./pages/ContactPage/ContactPage";
 import MainPage from "./pages/MainPage/MainPage";
 
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import { useShoppingCart } from "./context/ShoppingCartContext";
-import ProductsCategory from "./pages/ProductsPage/ProductsCategory";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
+const ProductsPage = lazy(() => import("./pages/ProductsPage/ProductsPage"));
+const ProductsCategory = lazy(
+  () => import("./pages/ProductsPage/ProductsCategory")
+);
+const ContactPage = lazy(() => import("./pages/ContactPage/ContactPage"));
 
 enum Path {
   Main = "/",
@@ -23,9 +29,69 @@ function App() {
     <>
       <Routes>
         <Route path={Path.Main} element={<MainPage />} />
-        <Route path={Path.Products} element={<ProductsPage />} />
-        <Route path={Path.Contact} element={<ContactPage />} />
-        <Route path={Path.ProductsCategory} element={<ProductsCategory />} />
+        <Route
+          path={Path.Products}
+          element={
+            <Suspense
+              fallback={
+                <Backdrop
+                  sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
+                  open={true}
+                  onClick={() => {}}
+                >
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              }
+            >
+              <ProductsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={Path.Contact}
+          element={
+            <Suspense
+              fallback={
+                <Backdrop
+                  sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
+                  open={true}
+                  onClick={() => {}}
+                >
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              }
+            >
+              <ContactPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={Path.ProductsCategory}
+          element={
+            <Suspense
+              fallback={
+                <Backdrop
+                  sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
+                  open={true}
+                  onClick={() => {}}
+                >
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              }
+            >
+              <ProductsCategory />
+            </Suspense>
+          }
+        />
       </Routes>
       {isCartOpen ? <Cart /> : null}
     </>

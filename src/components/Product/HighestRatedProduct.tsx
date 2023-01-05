@@ -3,7 +3,7 @@ import styles from "./HighestRatedProduct.module.css";
 import { formatCurrency } from "../../utilities/formatCurrency";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { IProduct } from "../../models";
-import Button from "@mui/material/Button";
+import Button from "../UI/Button/Button";
 
 interface ProductProps {
   product: IProduct;
@@ -28,29 +28,20 @@ const HighestRatedProduct = ({ product }: ProductProps) => {
       <div className={styles.quantityBlock}>
         {quantity === 0 ? (
           <Button
-            variant="contained"
-            disableElevation
+            buttonText="Add to cart"
             onClick={() => increaseCartQuantity(product)}
-          >
-            Add to cart
-          </Button>
+          />
         ) : (
           <div className={styles.quantityLogic}>
             <Button
-              variant="contained"
-              disableElevation
+              buttonText="-"
               onClick={() => decreaseCartQuantity(product)}
-            >
-              -
-            </Button>
+            />
             <p>{quantity}</p>
             <Button
-              variant="contained"
-              disableElevation
+              buttonText="+"
               onClick={() => increaseCartQuantity(product)}
-            >
-              +
-            </Button>
+            />
           </div>
         )}
       </div>
