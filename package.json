@@ -10,7 +10,6 @@
     "@fontsource/mochiy-pop-p-one": "^4.5.9",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
-    "@mui/styled-engine-sc": "^5.11.0",
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
