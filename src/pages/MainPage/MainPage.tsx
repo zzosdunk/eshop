@@ -52,15 +52,15 @@ const MainPage = () => {
             <div className="col-3">
               <NavLink to={`/products/sort/Clothes`}>
                 <img
-                  src="https://i.postimg.cc/dVFPYR5m/clothescategory.jpg"
+                  src="https://i.postimg.cc/pL4gQH25/clothescategory.webp"
                   alt="category"
                 />
               </NavLink>
             </div>
             <div className="col-3">
-              <NavLink to={`/products/sort/Jewelery`}>
+              <NavLink to={`/products/sort/Jewellery`}>
                 <img
-                  src="https://i.postimg.cc/zfDsLzZy/jewelerycategory.jpg"
+                  src="https://i.postimg.cc/fLJk0rbr/jewelerycategory.webp"
                   alt="category"
                 />
               </NavLink>
@@ -68,7 +68,7 @@ const MainPage = () => {
             <div className="col-3">
               <NavLink to={`/products/sort/Electronics`}>
                 <img
-                  src="https://i.postimg.cc/MpYkKc4k/electronicscategory.jpg"
+                  src="https://i.postimg.cc/TwXFSJ5R/electronicscategory.webp"
                   alt="category"
                 />
               </NavLink>
