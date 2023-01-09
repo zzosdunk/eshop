@@ -33,6 +33,14 @@
 
 ### React Context   
   
+
+
+
+  
+  
+### React Hooks   
+  
+  
   
   
 
@@ -43,15 +51,23 @@
 
 
 ### EmailJS  
-Possibility to send me a personal letter without leaving the site  
   
 
 
 
 ### Environment Variables  
-Security of sensitive data such as database links, emailJS api data  
   
 
+
+
+
+### Emotion
+
+
+
+
+
+### Material UI
 
 <br/>  
 
